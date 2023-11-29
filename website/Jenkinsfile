@@ -4,7 +4,7 @@ pipeline {
     }
 
      stages {
-    /*   stage('Install and Configure Puppet Agent') {
+      stage('Install and Configure Puppet Agent') {
             steps {
                 script {
                     // Install Puppet Agent
@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                     // Replace 'ubuntu@ip-172.31.8.138' with the actual name or IP address of your test server
-                    def testServer = 'root@kslave1'
+                    def testServer = '172.31.8.138'
 
                     // Replace 'https://github.com/Mangesh-142/Edureka_DevOps_Project_1.git' with your Ansible playbook Git repository URL
                     def ansibleRepo = 'https://github.com/Mangesh-142/Edureka_DevOps_Project_1.git'
