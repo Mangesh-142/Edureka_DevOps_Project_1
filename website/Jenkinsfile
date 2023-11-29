@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'env-test'
+        label 'jenkins_slave1'
     }
 
      stages {
