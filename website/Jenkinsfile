@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'env-test'
+        label 'jenkins_slave1'
     }
 
     stages {
@@ -23,11 +23,11 @@ pipeline {
         stage('Push Ansible configuration for Docker installation on test server') {
             steps {
                 script {
-                    // Replace 'ubuntu@ip-172.31.1.182' with the actual name or IP address of your test server
-                    def testServer = 'ubuntu@ip-172-31-1-182'
+                    // Replace 'ubuntu@ip-172.31.8.138' with the actual name or IP address of your test server
+                    def testServer = 'ubuntu@ip-172.31.8.138'
 
-                    // Replace 'https://github.com/rohitchavan2/project_edureka.git' with your Ansible playbook Git repository URL
-                    def ansibleRepo = 'https://github.com/rohitchavan2/project_edureka.git'
+                    // Replace 'https://github.com/Mangesh-142/Edureka_DevOps_Project_1.git' with your Ansible playbook Git repository URL
+                    def ansibleRepo = 'https://github.com/Mangesh-142/Edureka_DevOps_Project_1.git'
 
                     // Clone the Ansible playbook repository
                     sh "git clone ${ansibleRepo} /tmp/ansible-repo"
@@ -47,8 +47,8 @@ pipeline {
         stage('Build and deploy PHP Docker container') {
             steps {
                 script {
-                    // Replace 'https://github.com/rohitchavan2/project_edureka.git' with your Git repository URL
-                    def gitRepo = 'https://github.com/rohitchavan2/project_edureka.git'
+                    // Replace 'https://github.com/Mangesh-142/Edureka_DevOps_Project_1.git' with your Git repository URL
+                    def gitRepo = 'https://github.com/Mangesh-142/Edureka_DevOps_Project_1.git'
 
                     // Clone the Git repository
                     sh "git clone ${gitRepo} /tmp/php-web-app"
@@ -77,7 +77,7 @@ pipeline {
             // Send email on success
             emailext subject: "Job Succeeded: ${currentBuild.fullDisplayName}",
                       body: "The build of ${currentBuild.fullDisplayName} succeeded.",
-                      to: "rohit.chavan060898@gmail.com",
+                      to: "mangeshinde1612@gmail.com",
                       recipientProviders: [[$class: 'DevelopersRecipientProvider']]
         }
 
@@ -85,7 +85,7 @@ pipeline {
             // Send email on failure
             emailext subject: "Job Failed: ${currentBuild.fullDisplayName}",
                       body: "The build of ${currentBuild.fullDisplayName} failed.",
-                      to: "rohit.chavan060898@gmail.com",
+                      to: "mangeshinde1612@gmail.com",
                       recipientProviders: [[$class: 'DevelopersRecipientProvider']]
         }
     }
