@@ -4,27 +4,11 @@ pipeline {
     }
 
      stages {
-      stage('Install and Configure Puppet Agent') {
-            steps {
-                script {
-                    // Install Puppet Agent
-                    sh 'curl -O https://apt.puppetlabs.com/puppet6-release-bionic.deb'
-                    sh 'sudo dpkg -i puppet6-release-bionic.deb'
-                    sh 'sudo apt-get update'
-                    sh 'sudo apt-get install -y puppet-agent'
-
-                    // Configure Puppet Agent
-                    sh 'echo "server = puppetmaster.example.com" | sudo tee -a /etc/puppetlabs/puppet/puppet.conf'
-                    sh 'sudo /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true'
-                }
-            }
-        } 
-
         stage('Push Ansible configuration for Docker installation on test server') {
             steps {
                 script {
-                    // Replace 'ubuntu@ip-172.31.8.138' with the actual name or IP address of your test server
-                    def testServer = '172.31.8.138'
+                    // Replace 'root@172.31.8.138' with the actual name or IP address of your test server
+                    def testServer = 'root@172.31.8.138'
 
                     // Replace 'https://github.com/Mangesh-142/Edureka_DevOps_Project_1.git' with your Ansible playbook Git repository URL
                     def ansibleRepo = 'https://github.com/Mangesh-142/Edureka_DevOps_Project_1.git'
