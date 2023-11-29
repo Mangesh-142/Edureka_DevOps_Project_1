@@ -18,7 +18,7 @@ pipeline {
                     sh 'sudo /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true'
                 }
             }
-        } */
+        } 
 
         stage('Push Ansible configuration for Docker installation on test server') {
             steps {
